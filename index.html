@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Covid-19</title>
+    <!-- <script type="text/javascript" src="/Covid19/index.js"></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="sub-container">
+
+            <!--======================== Navbar ========================================= -->
+
+            <header>
+                <div class="nav">
+                    <p class="fight"><span class="redcovid">Covid-</span>19</p>
+                    <ul>
+                        <a href="">
+                            <li><span class="homespan">Home</span></li>
+                        </a>
+                        <a href="">
+                            <li>About</li>
+                        </a>
+                        <!-- <a href="">
+                            <li>Prevention</li>
+                        </a> -->
+                        <a href="">
+                            <li>Contact</li>
+                        </a>
+                    </ul>
+                    <button><a href="">Log In</a> </button>
+                </div>
+            </header>
+
+            <!--======================== Content ========================================= -->
+
+            <section class="content">
+
+                <!-- <h3 class="btn-like">Don't Lose Hope</h3> -->
+
+                <h1 class="help">Covid-19 Dashboard, <br> Take Care,<br> <span class="Us-span"> Neumorphic
+                        Design!</span>
+                </h1>
+
+                <p class="paragraph">This website access Covid-19 data through <a target="_blank"
+                        href="https://covid19api.com/"><span>covid19api</span></a> API for free. Data is sourced
+                    from <a target="_blank" href="https://github.com/CSSEGISandData/COVID-19"><span>Johns Hopkins
+                            CSSE</span></a>.
+                    <br><br>
+                    The API built by <a target="_blank" href="https://twitter.com/ksredelinghuys"><span> Kyle
+                            Redelinghuys</span>.</a>
+                </p>
+
+                <div class="btns">
+                    <button lat="new more" class="learn-more-btn"><a target="_blank"
+                            href="https://www.worldometers.info/coronavirus/?utm_campaign=homeAdUOA?Si">Learn
+                            More</a></button>
+                    <button class="watch-vid-btn"><a target="_blank"
+                            href="https://www.youtube.com/watch?v=YwhL98NiCcc">Whatch Video</a></button>
+                </div>
+                <img class="earth-img"
+                    src="https://image.freepik.com/free-photo/covid-19-corona-disease-infection-medical-illustration-concept-earth-fight-against-cure-searches-spreading-disease-virus-3d-rendering_50058-243.jpg"
+                    alt="">
+
+            </section>
+
+            <!--======================== Data ========================================= -->
+
+            <section class="data">
+
+                <div class="data-div">
+                    <div class="county">
+
+                        <form class="form" name="formA">
+                            <div>
+                                <label>
+                                    <input type="radio" name="myradio" value="Malaysia" />
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </label>
+                                <h4>Malaysia</h4>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" name="myradio" value="yemen" />
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </label>
+                                <h4>Yemen</h4>
+
+                                <input class="ff" type="radio" name="myradio" />
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="data-div">
+
+                    <div class="active">
+                        <h4>Confirmed</h4>
+                        <p id="confirmd" class="orange"></p>
+                    </div>
+
+                    <div class="recoverd">
+                        <h4>Recoverd</h4>
+                        <p id="recoverd" class="green"></p>
+                    </div>
+
+                    <div class="death">
+                        <h4>Deaths</h4>
+                        <p id="deaths" class="red"></p>
+                    </div>
+
+                    <!-- <div class="death">
+                        <h4>Population</h4>
+                        <p id="population" class="red"></p>
+                    </div> -->
+
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================== shit ============================================= -->
+
+
+
+
+        </div>
+
+    </div>
+</body>
+<script>
+    //================= on website start load global data ================= //
+
+
+
+    let radios = document.forms["formA"].elements["myradio"];
+
+    for (var i = 0, max = radios.length; i < max; i++) {
+        radios[i].addEventListener('change', function (e) {
+            e.preventDefault()
+
+            let country = this.value
+
+
+            let url = "https://api.covid19api.com/total/dayone/country/" + country
+            if (i == 2) {
+                country = NaN;
+                url = "https://api.covid19api.com/world/total"
+            }
+            covidData(url)
+        })
+    }
+
+    // for (var i = 0, max = radios.length; i < max; i++) {
+    //     radios[i].addEventListener('change', function (e) {
+    //         e.preventDefault()
+
+    //         let country = this.value
+
+
+    //         let url = "https://api.covid19api.com/total/dayone/country/" + country
+
+    //         covidData(url)
+    //     })
+    // }
+
+    // var radios = document.forms["formA"].elements["myradio"];
+
+    // for (var i = 0, max = radios.length; i < max; i++) {
+    //     radios[i].onclick = function () {
+    //         alert(this.value);
+    //     }
+    // }
+
+    window.onload = function () {
+        getCovidStats();
+    }
+
+    function getCovidStats() {
+
+
+        let url = "https://api.covid19api.com/world/total"
+
+        covidData(url)
+
+        async function covidData(url) {
+            let response = await fetch(url)
+            let data = await response.json()
+            console.log(data)
+
+            let confirmed = document.getElementById("confirmd")
+            let recoverd = document.getElementById("recoverd")
+            let deaths = document.getElementById("deaths")
+
+            confirmed.innerHTML = ""
+            recoverd.innerHTML = ""
+            deaths.innerHTML = ""
+
+            confirmed.append("" + data.TotalConfirmed.toLocaleString('en'))
+            recoverd.append("" + data.TotalRecovered.toLocaleString('en'))
+            deaths.append("" + data.TotalDeaths.toLocaleString('en'))
+
+
+        }
+    }
+
+    //================= on button click load country data ================= //
+
+    // const Malaysia = document.getElementById("mala")
+
+
+
+    // Malaysia.addEventListener('change', function (e) {
+    //     e.preventDefault()
+
+    //     let country = document.getElementById("mala").innerHTML
+
+    //     let url = "https://api.covid19api.com/total/dayone/country/" + country
+
+    //     covidData(url)
+    // })
+
+    // const Yemen = document.getElementById("yemen")
+
+    // Yemen.addEventListener('click', function (e) {
+    //     e.preventDefault()
+
+    //     let country = document.getElementById("yemen").innerHTML
+
+    //     let url = "https://api.covid19api.com/total/dayone/country/" + country
+
+    //     covidData(url)
+    // })
+
+
+    async function covidData(url) {
+        let response = await fetch(url)
+        let data = await response.json()
+        console.log(data)
+
+        let length = data.length
+
+        let index = length - 1
+
+        let confirmed = document.getElementById("confirmd")
+        let recoverd = document.getElementById("recoverd")
+        let deaths = document.getElementById("deaths")
+
+        confirmed.innerHTML = ""
+        recoverd.innerHTML = ""
+        deaths.innerHTML = ""
+
+        confirmed.append("" + data[index].Confirmed.toLocaleString('en'))
+        recoverd.append("" + data[index].Recovered.toLocaleString('en'))
+        deaths.append("" + data[index].Deaths.toLocaleString('en'))
+
+
+    }
+</script>
+
+</html>
