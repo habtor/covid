@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #34aaee;
+    background-color: #c6e6f9;
     color: black;
     margin: 20px 20px;
 }
@@ -20,7 +20,10 @@ body {
     max-width: 1000px;
     margin: auto;
     border-radius: 10px;
+    box-shadow: 6px 6px 6px #a8c4d4,
+        -6px -6px 6px #e4ffff;
 }
+
 
 .sub-container {
     width: 100%;
@@ -57,10 +60,11 @@ ul {
 /* ================================== content ========================================= */
 
 .nav {
-    display: flex;
+   
     justify-content: space-between;
     margin: 0 50px 40px 50px;
     color: black;
+    text-align: center;
 }
 
 .fight {
@@ -120,23 +124,6 @@ ul {
 
 .nav button a {
     border-bottom: 2px solid white;
-}
-
-
-
-
-@media (max-width: 500px) {
-    .nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-    }
-
-    .nav ul {
-        margin-bottom: 15px;
-        margin-top: 12px;
-    }
 }
 
 
@@ -250,8 +237,8 @@ ul {
 .data-div {
     display: flex;
     justify-content: space-between;
-    margin: 10px auto 20px auto;
-    max-width: 550px;
+    margin: 20px auto 20px auto;
+    
 
 
 }
@@ -271,16 +258,10 @@ ul {
 
 }
 
-.form div {
-    background: #c6e6f9;
-    box-shadow: 5px 5px 9px #b4d1e3,
-        -5px -5px 9px #d8fbff;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    align-self: center;
-    border-radius: 50%;
-    text-align: center;
+
+
+.county button {
+    background-color: black;
 }
 
 
@@ -296,7 +277,7 @@ ul {
 
     }
 
-    
+
 
     .active,
     .recoverd,
@@ -312,27 +293,8 @@ ul {
         margin-top: 30px;
     }
 
-    .form div {
-        background: #c6e6f9;
-        box-shadow: 5px 5px 9px #b4d1e3,
-            -5px -5px 9px #d8fbff;
-        margin: 0 auto 0 auto;
-        padding: 20px;
-        border-radius: 50%;
-        text-align: center;
-        align-self: center;
-
-        
-    }
-
-    .nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav ul li {
-        margin-top: 10px;
+    .formm {
+        text-align: center;        
     }
 
     .learn-more-btn {
@@ -416,6 +378,8 @@ ul {
     }
 }
 
+
+
 .red {
     color: red;
     font-weight: bolder;
@@ -423,7 +387,7 @@ ul {
 }
 
 .orange {
-    color: orange;
+    color: rgb(104, 102, 99);
     font-weight: bolder;
     font-size: 20px;
 }
@@ -435,7 +399,13 @@ ul {
 }
 
 .green {
-    color: #47fd56;
+    color: #00b60f;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.act {
+    color: rgb(255, 137, 1);
     font-weight: bolder;
     font-size: 20px;
 }
@@ -512,4 +482,51 @@ label input:checked~.fa {
     box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05),
         inset 2px 2px 10px rgba(0, 0, 0, 1);
     text-shadow: 0 0 5px #00fff1, 0 0 20px #00fff1;
+}
+
+
+/* =========================================== SELECT ============== */
+
+.select {
+    background: #c6e6f9;
+    box-shadow: inset 2px 2px 2px #b4d1e3,
+        inset -2px -2px 2px #d8fbff;
+    margin: auto;
+    width: 150px;
+    padding: 9px;
+    text-align: center;
+    border-radius: 6px;
+    margin-left: 10px;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.select:hover {
+    background: #c6e6f9;
+    box-shadow: 5px 5px 5px #b4d1e3,
+        -5px -5px 5px #d8fbff;
+}
+
+.get_btn {
+    padding: 9px;
+    width: 80px;
+    background: none;
+    border: none;
+    background: #c6e6f9;
+    box-shadow: 2px 2px 3px #b4d1e3,
+        -2px -2px 3px #d8fbff;
+    margin: auto;
+    width: 90px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.get_btn:hover {
+    box-shadow: inset 2px 2px 3px #b4d1e3,
+        inset -2px -2px 3px #d8fbff;
 }
